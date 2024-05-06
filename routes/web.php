@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,5 @@ Route::middleware(['auth', 'auth.admin'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
