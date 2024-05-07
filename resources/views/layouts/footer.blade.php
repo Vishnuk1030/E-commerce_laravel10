@@ -6,7 +6,7 @@
                     <div class="footer-contact">
                         <div class="brand-logo">
                             <a href="index.htm" class="footer-logo float-start">
-                                <img src="{{ asset('assets/images/logo.png') }}"
+                                <img src="{{ asset('assets/images/surf.webp') }}"
                                     class="f-logo img-fluid blur-up lazyload" alt="logo">
                             </a>
                         </div>

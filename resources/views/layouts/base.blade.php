@@ -22,7 +22,7 @@
     <meta name="author" content="Surfside Media">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <title>SurfsideMedia</title>
+    <title>Surfside shop</title>
 
     <link id="rtl-link" rel="stylesheet" type="text/css" href="{{ Asset('assets/css/vendors/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ Asset('assets/css/vendors/ion.rangeSlider.min.css') }}">
@@ -33,6 +33,10 @@
     <link rel="stylesheet" type="text/css" href="{{ Asset('assets/css/vendors/slick/slick-theme.css') }}">
     <link id="color-link" rel="stylesheet" type="text/css" href="{{ Asset('assets/css/demo4.css') }}">
     <style>
+        .active {
+            background-color: orange;
+        }
+
         .h-logo {
             max-width: 185px !important;
         }
@@ -116,8 +120,8 @@
                             <div class="menu-left">
                                 <div class="brand-logo">
                                     <a href="{{ route('app.index') }}">
-                                        <img src="assets/images/logo.png" class="h-logo img-fluid blur-up lazyload"
-                                            alt="logo">
+                                        <img src="{{ asset('assets/images/surf.webp') }}"
+                                            class="h-logo img-fluid blur-up lazyload" alt="logo" width="130px">
                                     </a>
                                 </div>
 
@@ -136,9 +140,12 @@
                                                     </span>
                                                 </div>
                                             </li>
-                                            <li><a href="{{ route('app.index') }}" class="nav-link menu-title">Home</a>
+                                            <li class="{{ Route::is('app.index') ? 'active' : '' }}">
+                                                <a href="{{ route('app.index') }}" class="nav-link menu-title">Home</a>
                                             </li>
-                                            <li><a href="{{route('shop.index')}}" class="nav-link menu-title">Shop</a></li>
+                                            <li class="{{ Route::is('shop.index') ? 'active' : '' }}">
+                                                <a href="{{ route('shop.index') }}" class="nav-link menu-title">Shop</a>
+                                            </li>
                                             <li><a href="cart/list.html" class="nav-link menu-title">Cart</a></li>
                                             <li><a href="about-us.html" class="nav-link menu-title">About Us</a></li>
                                             <li><a href="contact-us.html" class="nav-link menu-title">Contact Us</a>
