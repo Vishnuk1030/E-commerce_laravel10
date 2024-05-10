@@ -33,9 +33,9 @@
     <link rel="stylesheet" type="text/css" href="{{ Asset('assets/css/vendors/slick/slick-theme.css') }}">
     <link id="color-link" rel="stylesheet" type="text/css" href="{{ Asset('assets/css/demo4.css') }}">
     <style>
-        .active {
+        /* .active {
             background-color: orange;
-        }
+        } */
 
         .h-logo {
             max-width: 185px !important;

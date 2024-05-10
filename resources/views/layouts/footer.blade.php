@@ -15,12 +15,12 @@
                                 <span><b>phone:</b> <span class="font-light"> +1 0000000000</span></span>
                             </li>
                             <li>
-                                <span><b>Address:</b><span class="font-light"> NIT, Faridabad, Haryana,
+                                <span><b>Address:</b><span class="font-light"> NIT, palakkad, kerala,
                                         India</span></span>
                             </li>
                             <li>
                                 <span><b>Email:</b><span class="font-light">
-                                        contact@surfsidemedia.in</span></span>
+                                        contact@surfsideshop.in</span></span>
                             </li>
                         </ul>
                     </div>
