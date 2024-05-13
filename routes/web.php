@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
+//shop
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 
-Route::get('/product/{slug}',[ShopController::class,'productDetils'])->name('shop.product.details');
+//each product viewing
+Route::get('/product/{slug}', [ShopController::class, 'productDetils'])->name('shop.product.details');
+
+//cart
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+//Add to cart
+Route::post('/cart/store', [CartController::class, 'addToCart'])->name('cart.store');
+
+//update cart
+Route::put('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');

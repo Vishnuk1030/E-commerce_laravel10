@@ -207,18 +207,13 @@
                                             <i class="fa fa-bookmark fz-16 me-2"></i>
                                             <span>Wishlist</span>
                                         </a>
-                                        <a href="javascript:void(0)" id="cartEffect"
+                                        <a href="javascript:void(0)" id="cartEffect" onclick="event.preventDefault();document.getElementById('addtocart').submit();"
                                             class="btn btn-solid hover-solid btn-animation">
                                             <i class="fa fa-shopping-cart"></i>
                                             <span>Add To Cart</span>
-                                            <form id="addtocart" method="post"
-                                                action="http://localhost:8000/cart/store">
-                                                <input type="hidden" name="_token"
-                                                    value="MkRqEzTGuoSx6LqJUm0OAKxSgNUYt26wTT7RMUZY"> <input
-                                                    type="hidden" name="id" value="1">
-                                                <input type="hidden" name="name"
-                                                    value="Autem Repudiandae Accusantium Blanditiis">
-                                                <input type="hidden" name="price" value="13">
+                                            <form id="addtocart" method="post" action="{{ route('cart.store') }}">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$product->id}}">
                                                 <input type="hidden" name="quantity" id="qty" value="1">
                                             </form>
                                         </a>
@@ -815,14 +810,14 @@
                                 <div class="product-box">
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="{{ route('shop.product.details',['slug'=>$rproduct->slug]) }}">
-                                                <img src="{{asset('assets/images/fashion/product/front')}}/{{$rproduct->image}}"
+                                            <a href="{{ route('shop.product.details', ['slug' => $rproduct->slug]) }}">
+                                                <img src="{{ asset('assets/images/fashion/product/front') }}/{{ $rproduct->image }}"
                                                     class="bg-img blur-up lazyload" alt="">
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="{{ route('shop.product.details',['slug'=>$rproduct->slug]) }}">
-                                                <img src="{{asset('assets/images/fashion/product/back')}}/{{$rproduct->image}}"
+                                            <a href="{{ route('shop.product.details', ['slug' => $rproduct->slug]) }}">
+                                                <img src="{{ asset('assets/images/fashion/product/back') }}/{{ $rproduct->image }}"
                                                     class="bg-img blur-up lazyload" alt="">
                                             </a>
                                         </div>
@@ -871,7 +866,8 @@
                                             </ul>
                                         </div>
                                         <div class="main-price">
-                                            <a href="{{ route('shop.product.details',['slug'=>$rproduct->slug]) }}" class="font-default">
+                                            <a href="{{ route('shop.product.details', ['slug' => $rproduct->slug]) }}"
+                                                class="font-default">
                                                 <h5>{{ $rproduct->name }}</h5>
                                             </a>
                                             <div class="listing-content">
