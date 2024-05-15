@@ -116,6 +116,17 @@
             <div class="container-fluid-lg">
                 <div class="row">
                     <div class="col-lg-12">
+
+                        {{-- success msg --}}
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show color" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                        {{-- / success msg --}}
+
                         <div class="main-menu">
                             <div class="menu-left">
                                 <div class="brand-logo">
@@ -178,7 +189,7 @@
                                     </li>
                                     <li class="onhover-dropdown wislist-dropdown">
                                         <div class="cart-media">
-                                            <a href="{{route('cart.index')}}">
+                                            <a href="{{ route('cart.index') }}">
                                                 <i data-feather="shopping-cart"></i>
                                                 <span id="cart-count" class="label label-theme rounded-pill">
                                                     {{ Cart::instance('cart')->content()->count() }}

@@ -30,11 +30,11 @@ class CartController extends Controller
     {
         $rowId = $request->rowId;
         Cart::instance('cart')->remove($rowId);
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success','Item deleted SuccessFully.!');
     }
     public function ClearCart()
     {
         Cart::instance('cart')->destroy();
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success','Items cleared SuccessFully.!');
     }
 }
