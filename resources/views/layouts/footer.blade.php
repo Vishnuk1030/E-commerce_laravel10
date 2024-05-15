@@ -33,13 +33,13 @@
                         <div class="footer-content">
                             <ul>
                                 <li>
-                                    <a href="index.htm" class="font-dark">Home</a>
+                                    <a href="{{route('app.index')}}" class="font-dark">Home</a>
                                 </li>
                                 <li>
-                                    <a href="shop.html" class="font-dark">Shop</a>
+                                    <a href="{{route('shop.index')}}" class="font-dark">Shop</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html" class="font-dark">About Us</a>
+                                    <a href="{{route('cart.index')}}" class="font-dark">Cart</a>
                                 </li>
                                 <li>
                                     <a href="#" class="font-dark">Blog</a>

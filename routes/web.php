@@ -43,7 +43,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 
 //each product viewing
-Route::get('/product/{slug}', [ShopController::class, 'productDetils'])->name('shop.product.details');
+Route::get('/shop/product/{slug}', [ShopController::class, 'productDetils'])->name('shop.product.details');
 
 //cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -53,3 +53,10 @@ Route::post('/cart/store', [CartController::class, 'addToCart'])->name('cart.sto
 
 //update cart
 Route::put('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+
+//RemoveItem
+Route::delete('/cart/remove',[CartController::class,'removeItem'])->name('cart.remove');
+
+//clearItem
+Route::delete('/cart/clear',[CartController::class,'ClearCart'])->name('cart.clear');
+
