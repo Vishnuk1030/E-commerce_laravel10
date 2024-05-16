@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -50,11 +51,17 @@ class ShopController extends Controller
         }
         $brands = Brand::orderBy('name', 'ASC')->get();
         $q_brands = $request->query("brands");
-        $products = Product::where(function ($query) use($q_brands) {
-                                    $query->whereIn('brand_id', explode(',', $q_brands))->orwhereRaw("'" . $q_brands . "'=''");
-                                })
-                                ->orderBy('created_at', 'DESC')->orderBy($o_column, $o_order)->paginate($size);
-        return view('shop', compact('products', 'page', 'size', 'order', 'brands', 'q_brands'));
+        $categories = Category::orderBy('name', 'ASC')->get();
+        $q_categories = $request->query("categories");
+        $products = Product::where(function ($query) use ($q_brands) {
+            $query->whereIn('brand_id', explode(',', $q_brands))->orwhereRaw("'" . $q_brands . "'=''");
+            })
+            ->where(function ($query) use ($q_categories) {
+                $query->whereIn('category_id', explode(',', $q_categories))->orwhereRaw("'" . $q_categories . "'=''");
+            })
+            ->orderBy('created_at', 'DESC')->orderBy($o_column, $o_order)->paginate($size);
+
+        return view('shop', compact('products', 'page', 'size', 'order', 'brands', 'q_brands', 'categories', 'q_categories'));
     }
 
     public function productDetils($slug)
