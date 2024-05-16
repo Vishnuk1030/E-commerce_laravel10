@@ -212,9 +212,13 @@
                                             @foreach ($categories as $category)
                                                 <li>
                                                     <div class="form-check ps-0 custome-form-check">
-                                                        <input class="checkbox_animated check-it" id="ct{{$category->id}}" name="categories" type="checkbox" @if (in_array($category->id, explode(',', $q_categories))) checked="checked" @endif value="{{$category->id}}" onchange="filterProductByCategory(this)">
-                                                        <label class="form-check-label">{{$category->name}}</label>
-                                                        <p class="font-light">({{$category->products->count()}})</p>
+                                                        <input class="checkbox_animated check-it"
+                                                            id="ct{{ $category->id }}" name="categories" type="checkbox"
+                                                            @if (in_array($category->id, explode(',', $q_categories))) checked="checked" @endif
+                                                            value="{{ $category->id }}"
+                                                            onchange="filterProductByCategory(this)">
+                                                        <label class="form-check-label">{{ $category->name }}</label>
+                                                        <p class="font-light">({{ $category->products->count() }})</p>
                                                     </div>
                                                 </li>
                                             @endforeach
@@ -286,9 +290,11 @@
                                             <select class="form-select" name="orderby" id="orderby">
                                                 <option value="-1" {{ $order == -1 ? 'selected' : '' }}>Default
                                                 </option>
-                                                <option value="1" {{ $order == 1 ? 'selected' : '' }}>Date, New To Old
+                                                <option value="1" {{ $order == 1 ? 'selected' : '' }}>Date, New To
+                                                    Old
                                                 </option>
-                                                <option value="2" {{ $order == 2 ? 'selected' : '' }}>Date, Old To New
+                                                <option value="2" {{ $order == 2 ? 'selected' : '' }}>Date, Old To
+                                                    New
                                                 </option>
                                                 <option value="3" {{ $order == 3 ? 'selected' : '' }}>Price, Low To
                                                     High</option>
@@ -468,20 +474,37 @@
         <input type="hidden" name="order" id="order" value="{{ $order }}">
         <input type="hidden" name="brands" id="brands" value="{{ $q_brands }}">
         <input type="hidden" name="categories" id="categories" value="{{ $q_categories }}">
+        <input type="hidden" name="prange" id="prange" value="">
 
     </form>
 @endsection
 
 @push('scripts')
     <script>
-        $('#pagesize').on("change", function() {
-            $("#size").val($("#pagesize option:selected").val());
-            $('#frmFilter').submit();
-        });
+        $(function() {
+            $('#pagesize').on("change", function() {
+                $("#size").val($("#pagesize option:selected").val());
+                $('#frmFilter').submit();
+            });
 
-        $("#orderby").on("change", function() {
-            $("#order").val($("#orderby option:selected").val());
-            $('#frmFilter').submit();
+            $("#orderby").on("change", function() {
+                $("#order").val($("#orderby option:selected").val());
+                $('#frmFilter').submit();
+            });
+
+            var $range = $(".js-range-slider");
+            instance = $range.data("ionRangeSlider");
+            instance.update({
+                from: {{ $from }},
+                to: {{ $to }}
+            });
+
+            $("#prange").on("change", function() {
+                setTimeout(() => {
+                    $('#frmFilter').submit();
+                }, 1000);
+            });
+
         });
 
         function filterProductByBrand(brand) {
