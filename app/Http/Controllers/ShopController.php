@@ -7,7 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Cart;
 class ShopController extends Controller
 {
     public function index(Request $request)
@@ -68,7 +68,7 @@ class ShopController extends Controller
             ->whereBetween('regular_price', array($from, $to))
             ->orderBy('created_at', 'DESC')->orderBy($o_column, $o_order)->paginate($size);
 
-        return view('shop', compact('products', 'page', 'size', 'order', 'brands', 'q_brands', 'categories', 'q_categories','from','to'));
+        return view('shop', compact('products', 'page', 'size', 'order', 'brands', 'q_brands', 'categories', 'q_categories', 'from', 'to'));
     }
 
     public function productDetils($slug)
@@ -76,5 +76,11 @@ class ShopController extends Controller
         $product = product::where('slug', $slug)->first();
         $rproducts = Product::where('slug', '!=', $slug)->inRandomOrder('id')->get()->take(8);
         return view('details', compact('product', 'rproducts'));
+    }
+    public function getCartAndWishlistCount()
+    {
+        $cartCount = Cart::instance("cart")->content()->count();
+        $wishlistCount = Cart::instance("wishlist")->content()->count();
+        return response()->json(['status' => 200, 'cartCount' => $cartCount, 'wishlistCount' => $wishlistCount]);
     }
 }

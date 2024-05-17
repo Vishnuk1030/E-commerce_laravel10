@@ -182,7 +182,7 @@
                                             <a href="wishlist/list.html">
                                                 <i data-feather="heart"></i>
                                                 <span id="wishlist-count" class="label label-theme rounded-pill">
-                                                    0
+                                                    {{ Cart::instance('wishlist')->content()->count() }}
                                                 </span>
                                             </a>
                                         </div>
