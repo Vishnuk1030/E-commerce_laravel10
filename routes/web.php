@@ -66,3 +66,6 @@ Route::post('/wishlist/add', [WishlistController::class, 'addProductTowishlist']
 
 //wishlist count
 Route::get('/cart-wishlist-count', [ShopController::class, 'getCartAndWishlistCount'])->name('shop.cart.wishlist.count');
+
+//get Wishlisted Products
+Route::get('/wishlist',[WishlistController::class,'getWishlistedProducts'])->name('wishlist.product.list');
