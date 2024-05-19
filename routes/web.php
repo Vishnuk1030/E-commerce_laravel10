@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 //home route
 Route::get('/', [BaseController::class, 'home'])->name('app.index');
@@ -75,3 +72,6 @@ Route::delete('/wishlist/remove',[WishlistController::class,'removeProductFromWi
 
 //clear Item from wishlist
 Route::delete('/wishlist/clear',[WishlistController::class,'ClearWishlist'])->name('wishlist.clear');
+
+//move product from wishlist to cart
+Route::post('wishlist/move-to-cart',[WishlistController::class,'moveToCart'])->name('wishlist.to.cart');

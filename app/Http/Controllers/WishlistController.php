@@ -29,4 +29,11 @@ class WishlistController extends Controller
         Cart::instance("wishlist")->destroy();
         return redirect()->route('wishlist.product.list')->with('success', 'Successfully! Product cleared from wishlist');
     }
+    public function moveToCart(Request $request)
+    {
+        $item = Cart::instance('wishlist')->get($request->rowId);
+        Cart::instance("wishlist")->remove($request->rowId);
+        Cart::instance('cart')->add($item->model->id, $item->model->name, 1, $item->model->regular_price)->associate('App\Models\Product');
+        return redirect()->route('wishlist.product.list')->with('success','Successfully added to the cart.!');
+    }
 }
