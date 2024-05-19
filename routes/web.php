@@ -55,10 +55,10 @@ Route::post('/cart/store', [CartController::class, 'addToCart'])->name('cart.sto
 //update cart
 Route::put('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 
-//RemoveItem
+//Remove Item from cart
 Route::delete('/cart/remove', [CartController::class, 'removeItem'])->name('cart.remove');
 
-//clearItem
+//clear Item from cart
 Route::delete('/cart/clear', [CartController::class, 'ClearCart'])->name('cart.clear');
 
 //add to wishlist
@@ -69,3 +69,9 @@ Route::get('/cart-wishlist-count', [ShopController::class, 'getCartAndWishlistCo
 
 //get Wishlisted Products
 Route::get('/wishlist',[WishlistController::class,'getWishlistedProducts'])->name('wishlist.product.list');
+
+//Remove Item from wishlist
+Route::delete('/wishlist/remove',[WishlistController::class,'removeProductFromWishlist'])->name('wishlist.remove');
+
+//clear Item from wishlist
+Route::delete('/wishlist/clear',[WishlistController::class,'ClearWishlist'])->name('wishlist.clear');

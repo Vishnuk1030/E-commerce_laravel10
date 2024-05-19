@@ -116,7 +116,7 @@
                             <div class="col-sm-7 col-5 order-1">
                                 <div class="left-side-button text-end d-flex d-block justify-content-end">
                                     <a href="javascript:void(0)" onclick="clearCart()"
-                                        class="text-decoration-underline theme-color d-block text-capitalize">clear
+                                        class="btn btn-warning rounded">clear
                                         all items</a>
                                 </div>
                             </div>
