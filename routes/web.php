@@ -23,6 +23,15 @@ use Illuminate\Support\Facades\Route;
 //home route
 Route::get('/', [BaseController::class, 'home'])->name('app.index');
 
+//About us
+Route::get('/about_us',[BaseController::class,'aboutUs'])->name('about_Us');
+
+//contact us
+Route::get('/contact_us',[BaseController::class,'ContactUs'])->name('contact_Us');
+
+//Blog
+Route::get('/blog',[BaseController::class,'blog'])->name('blog');
+
 //user route
 Route::middleware('auth')->group(function () {
     Route::get('/my_acount', [UserController::class, 'index'])->name('user.index');

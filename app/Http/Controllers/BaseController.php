@@ -11,4 +11,18 @@ class BaseController extends Controller
     {
         return view('index');
     }
+    public function aboutUs()
+    {
+        return view('about_us');
+    }
+
+    public function ContactUs()
+    {
+        return view('contact_us');
+    }
+
+    public function blog()
+    {
+        return view('blog');
+    }
 }
